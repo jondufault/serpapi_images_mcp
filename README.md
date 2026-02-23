@@ -45,7 +45,7 @@ Then set `SERPAPI_API_KEY` in your environment.
 ### From source
 
 ```bash
-git clone https://github.com/yourusername/serpapi-images-mcp.git
+git clone https://github.com/jondufault/serpapi_images_mcp.git
 cd serpapi-images-mcp
 npm install
 ```
