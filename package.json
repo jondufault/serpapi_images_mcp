@@ -1,0 +1,27 @@
+{
+  "name": "serpapi-images-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for SerpAPI Google Images search",
+  "type": "module",
+  "bin": {
+    "serpapi-images-mcp": "build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod 755 build/index.js",
+    "prepare": "npm run build"
+  },
+  "license": "MIT",
+  "files": [
+    "build",
+    "LICENSE",
+    "README.md"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.0",
+    "typescript": "^5.9.3"
+  }
+}
