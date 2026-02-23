@@ -35,8 +35,12 @@ server.tool(
     image_type: z.enum(["face", "photo", "clipart", "lineart", "animated"]).optional().describe("Image type filter"),
     ijn: z.number().int().min(0).max(99).optional().describe("Page number (0-99)"),
     safe: z.enum(["active", "off"]).optional().describe("Safe search setting"),
+    license: z
+      .enum(["cl", "ol"])
+      .optional()
+      .describe("Usage rights filter: cl=Creative Commons, ol=commercial & other licenses"),
   },
-  async ({ limit, ...params }) => {
+  async ({ limit, license, ...params }) => {
     const url = new URL("https://serpapi.com/search");
     url.searchParams.set("engine", "google_images");
     url.searchParams.set("api_key", SERPAPI_API_KEY);
@@ -45,6 +49,10 @@ server.tool(
       if (value !== undefined) {
         url.searchParams.set(key, String(value));
       }
+    }
+
+    if (license) {
+      url.searchParams.set("tbs", `il:${license}`);
     }
 
     const response = await fetch(url.toString());
